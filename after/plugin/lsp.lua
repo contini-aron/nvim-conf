@@ -30,3 +30,4 @@ if packer_plugins["lsp-zero"] then
     end)
 
     lsp.setup()
+end
