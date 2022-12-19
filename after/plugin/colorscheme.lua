@@ -1,3 +1,3 @@
-if packer_plugins["gruvbox-baby"] then 
+if packer_plugins then 
     vim.cmd.colorscheme("gruvbox-baby")
 end

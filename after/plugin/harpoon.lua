@@ -1,4 +1,4 @@
-if packer_plugins["harpoon"] then 
+if packer_plugins then 
     local mark = require('harpoon.mark')
     local ui = require('harpoon.ui')
 

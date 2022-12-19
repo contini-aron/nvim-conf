@@ -1,3 +1,3 @@
-if packer_plugins["vim-fugitive"] then 
+if packer_plugins then 
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 end
