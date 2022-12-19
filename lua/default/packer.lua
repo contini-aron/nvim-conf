@@ -29,6 +29,7 @@ vim.cmd([[
   augroup end
 ]])
 
+vim.api.create_autocmd("PackerComplete", {command=":ReloadConfig<CR>"})
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
