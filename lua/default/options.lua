@@ -34,7 +34,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 -- COLOR COLUMN
-vim.opt.colorcolumn = 80
+vim.opt.colorcolumn = "80"
 
 -- SPLITS
 vim.opt.splitright = true
