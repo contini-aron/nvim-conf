@@ -1,1 +1,1 @@
-vim.api.nvim_create_autocmd("PackerComplete", {command=":ReloadConfig<CR>"})
+-- vim.api.nvim_create_autocmd("PackerComplete", {command=":ReloadConfig<CR>"})
