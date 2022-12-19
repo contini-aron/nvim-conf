@@ -56,7 +56,7 @@ return packer.startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 		}
 
-	use ('nvim-treesitter/nvim-treesitter', {'run': ':TSUpdate'})
+	use ('nvim-treesitter/nvim-treesitter', {run: ':TSUpdate'})
 	use ('ThePrimeagen/harpoon')
 	use ('tpope/vim-fugitive')
 	use ('luisiacc/gruvbox-baby')
