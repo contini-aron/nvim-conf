@@ -21,7 +21,7 @@ vim.g.maplocalleader = " "
 -- Normal --
 
 -- file replace current word
-keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
 -- Keep cursor in place while J
 keymap("n", "J", "mzJ`z", opts)
