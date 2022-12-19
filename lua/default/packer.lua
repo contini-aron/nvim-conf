@@ -21,14 +21,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 	print("Installing packer close and reopen Neovim...")
 	vim.cmd([[packadd packer.nvim]])
-	vim.cmd('command! ReloadConfig lua ReloadConfig()')
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- Autocommand that reloads neovim whenever you save the packer.lua file
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -52,25 +51,36 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
 	-- My plugins here
+	use {
+	  	-- or                          , branch = '0.1.x',
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		requires = { {'nvim-lua/plenary.nvim'} }
+		}
 
-	use({ "wbthomason/packer.nvim"}) -- Have packer manage itself
-	use({ "nvim-lua/plenary.nvim"}) -- Useful lua functions used by lots of plugins
-    
-    -- THEMES
-    use { "catppuccin/nvim", as = "catppuccin" } --theme
-
-    	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp"}) -- The completion plugin
-	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-	use({ "hrsh7th/cmp-path" }) -- path completions
-	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-nvim-lua" })
-
-	-- snippets
-	use({ "L3MON4D3/LuaSnip" }) --snippet engine
-	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
-
+	use ('nvim-treesitter/nvim-treesitter', {'run': ':TSUpdate'})
+	use ('ThePrimeagen/harpoon')
+	use ('tpope/vim-fugitive')
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
+	  
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+	  
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+		}
+	  }
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
